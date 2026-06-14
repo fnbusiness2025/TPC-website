@@ -1,0 +1,249 @@
+<script lang="ts">
+  import Header from '$lib/components/Header.svelte';
+  import Footer from '$lib/components/Footer.svelte';
+  import { scrollAnimate } from '$lib/actions/scrollAnimate';
+
+  const stats = [
+    { number: '10+', label: 'Years Experience' },
+    { number: '500+', label: 'Properties Valued' },
+    { number: '100%', label: 'Client Satisfaction' }
+  ];
+
+  const values = [
+    {
+      title: 'Integrity',
+      description: 'We conduct business with unwavering honesty and transparency in all our dealings, building trust through ethical practices.',
+      icon: 'ri-hand-heart-line'
+    },
+    {
+      title: 'Professionalism',
+      description: 'We maintain the highest standards of professional conduct and expertise, delivering services with precision and reliability.',
+      icon: 'ri-briefcase-line'
+    },
+    {
+      title: 'Excellence',
+      description: 'We strive for excellence in every service we deliver, continuously improving and exceeding client expectations.',
+      icon: 'ri-star-line'
+    },
+    {
+      title: 'Client Focus',
+      description: "We put our clients' needs at the center of everything we do, ensuring personalized solutions and exceptional service.",
+      icon: 'ri-user-heart-line'
+    },
+    {
+      title: 'Innovation',
+      description: 'We embrace innovative solutions and modern approaches to meet evolving real estate challenges in Malawi.',
+      icon: 'ri-lightbulb-line'
+    },
+    {
+      title: 'Sustainability',
+      description: 'We promote sustainable development practices that benefit our clients and contribute to Malawi\'s future growth.',
+      icon: 'ri-leaf-line'
+    }
+  ];
+</script>
+
+<svelte:head>
+  <title>About Us | Terrestrial Property Consulting Limited</title>
+  <meta name="description" content="Learn about TPC Malawi, our mission, vision, and the core values that guide our professional property services." />
+</svelte:head>
+
+<div class="flex flex-col min-h-screen bg-background-50">
+  <Header />
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="relative py-28 md:py-36 bg-accent-950 overflow-hidden">
+      <div class="absolute inset-0 opacity-25">
+        <img 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" 
+          alt="Professional Office Space" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-r from-accent-950 via-accent-950/80 to-transparent"></div>
+      
+      <div class="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
+        <div class="max-w-3xl" use:scrollAnimate={{ animation: 'fade-right' }}>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-600/20 text-accent-300 border border-accent-500/30 text-[10px] font-bold uppercase tracking-widest mb-6">
+            Our Story
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-background-50 mb-6 font-heading leading-tight">
+            About Terrestrial Property Consulting
+          </h1>
+          <p class="text-lg md:text-xl text-background-200 font-medium leading-relaxed">
+            A premier property consulting firm dedicated to providing exceptional real estate services throughout Malawi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Overview & Stats -->
+    <section class="py-24 px-6 md:px-10 overflow-hidden">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div use:scrollAnimate={{ animation: 'fade-right' }}>
+            <h2 class="text-3xl font-bold font-heading text-foreground-950 mb-6">Established Excellence in Malawi's Property Market</h2>
+            <div class="flex flex-col gap-4 text-foreground-600 leading-relaxed text-lg">
+              <p>
+                Terrestrial Property Consulting Limited (TPC Malawi) is a premier, Malawian-owned property consulting firm. Registered in 2014 and incorporated in 2020, we have grown into a trusted partner for professional real estate and valuation services across the country.
+              </p>
+              <p>
+                Based in Blantyre, we specialize in providing accurate, reliable, and professional solutions for a wide range of clients, including financial institutions, corporate entities, and private individuals. Our commitment to international standards like RICS, combined with deep local knowledge, sets us apart in the Malawian market.
+              </p>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-3 gap-8 mt-12">
+              {#each stats as stat, i}
+                <div class="flex flex-col" use:scrollAnimate={{ animation: 'fade-up', delay: 200 + (i * 100) }}>
+                  <span class="text-3xl md:text-4xl font-bold text-accent-600 font-heading mb-1">{stat.number}</span>
+                  <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-foreground-400">{stat.label}</span>
+                </div>
+              {/each}
+            </div>
+          </div>
+          
+          <div class="relative group" use:scrollAnimate={{ animation: 'fade-left' }}>
+            <div class="absolute -inset-4 bg-accent-600/5 rounded-[2rem] -rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80" 
+              alt="Malawi Real Estate Professionals" 
+              class="relative rounded-3xl w-full h-[450px] object-cover shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="py-24 bg-background-100 px-6 md:px-10">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="text-center mb-16" use:scrollAnimate={{ animation: 'fade-up' }}>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-600/10 text-accent-700 border border-accent-600/20 text-[10px] font-bold uppercase tracking-widest mb-6">
+            Expert Leadership
+          </div>
+          <h2 class="text-3xl md:text-5xl font-bold font-heading text-foreground-950 mb-6">The Mind Behind TPC</h2>
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-accent-950/5 border border-background-200" use:scrollAnimate={{ animation: 'fade-up' }}>
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-2/5 h-[400px] md:h-auto">
+              <img 
+                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80" 
+                alt="Bonface Galeta" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="md:w-3/5 p-10 md:p-16 flex flex-col justify-center">
+              <h3 class="text-3xl font-bold text-foreground-950 mb-2">Bonface Galeta</h3>
+              <p class="text-accent-600 font-bold text-sm uppercase tracking-widest mb-8">Managing Director & Lead Consultant</p>
+              
+              <div class="space-y-6 text-foreground-600 leading-relaxed italic">
+                <p>
+                  "At TPC, we don't just value property; we value the trust our clients place in us. Our goal is to bring international standards of professionalism to the Malawian property market, ensuring every client makes informed, strategic decisions."
+                </p>
+              </div>
+
+              <div class="mt-10 pt-10 border-t border-background-100 grid grid-cols-2 gap-6">
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 mb-2">Qualifications</div>
+                  <div class="text-xs font-bold text-foreground-950">MBA, BSc Estate Management</div>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 mb-2">Memberships</div>
+                  <div class="text-xs font-bold text-foreground-950">Surveyors Institute of Malawi (SIM)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="py-24 bg-accent-950 relative overflow-hidden">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+          <!-- Vision -->
+          <div 
+            class="bg-white/5 backdrop-blur-sm p-10 md:p-12 rounded-3xl border border-white/10 hover:border-accent-500/30 transition-all group"
+            use:scrollAnimate={{ animation: 'fade-right' }}
+          >
+            <div class="w-14 h-14 rounded-2xl bg-accent-600 flex items-center justify-center text-background-50 mb-8 shadow-lg shadow-accent-600/20 group-hover:scale-110 transition-transform">
+              <i class="ri-eye-line text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold font-heading text-background-50 mb-6">Our Vision</h3>
+            <p class="text-background-200 leading-relaxed">
+              To be the distinguished mark of property professionals in Malawi, setting the standard for excellence and innovation in real estate consulting.
+            </p>
+          </div>
+
+          <!-- Mission -->
+          <div 
+            class="bg-white/5 backdrop-blur-sm p-10 md:p-12 rounded-3xl border border-white/10 hover:border-accent-500/30 transition-all group"
+            use:scrollAnimate={{ animation: 'fade-left' }}
+          >
+            <div class="w-14 h-14 rounded-2xl bg-accent-600 flex items-center justify-center text-background-50 mb-8 shadow-lg shadow-accent-600/20 group-hover:scale-110 transition-transform">
+              <i class="ri-focus-3-line text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold font-heading text-background-50 mb-6">Our Mission</h3>
+            <p class="text-background-200 leading-relaxed">
+              Providing first-class real estate services by applying exceptional property skills, ensuring client success through professional expertise and unwavering commitment.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Abstract BG decor -->
+      <div class="absolute top-0 right-0 w-1/3 h-full bg-accent-600/5 blur-[100px] -rotate-12 translate-x-1/2"></div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="py-24 px-6 md:px-10 bg-background-50">
+      <div class="max-w-[1400px] mx-auto text-center">
+        <div class="max-w-2xl mx-auto mb-16" use:scrollAnimate={{ animation: 'fade-up' }}>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-600/10 text-accent-700 border border-accent-600/20 text-[10px] font-bold uppercase tracking-widest mb-6">
+            What Drives Us
+          </div>
+          <h2 class="text-3xl md:text-5xl font-bold font-heading text-foreground-950 mb-6">Our Core Values</h2>
+          <p class="text-foreground-600">The fundamental principles that guide our business and define our commitment to excellence.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+          {#each values as value, i}
+            <div 
+              class="bg-white p-10 rounded-3xl border border-background-200 hover:border-accent-600/20 hover:shadow-xl hover:shadow-accent-950/5 transition-all group"
+              use:scrollAnimate={{ animation: 'fade-up', delay: i * 50 }}
+            >
+              <div class="w-12 h-12 rounded-xl bg-background-100 flex items-center justify-center text-accent-600 mb-8 group-hover:bg-accent-600 group-hover:text-background-50 transition-all">
+                <i class="{value.icon} text-xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-foreground-950 mb-4">{value.title}</h4>
+              <p class="text-sm text-foreground-500 leading-relaxed">{value.description}</p>
+            </div>
+          {/each}
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-24 bg-accent-950 relative overflow-hidden">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-10 text-center relative z-10" use:scrollAnimate={{ animation: 'fade-up' }}>
+        <h2 class="text-3xl md:text-5xl font-bold text-background-50 mb-8 font-heading">Ready to work with Malawi's premier firm?</h2>
+        <p class="text-background-300 max-w-xl mx-auto mb-12">
+          Contact us today to experience the professionalism and expertise that sets TPC Malawi apart.
+        </p>
+        <div class="flex flex-wrap justify-center gap-6">
+          <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-background-50 px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] transition-all shadow-xl shadow-accent-600/20">
+            Work With Us
+          </a>
+          <a href="/services" class="bg-transparent border-2 border-background-50/30 hover:border-background-50 text-background-50 px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] transition-all backdrop-blur-sm">
+            Explore Services
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</div>

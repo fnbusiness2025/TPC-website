@@ -1,0 +1,131 @@
+
+<script lang="ts">
+  import { page } from '$app/stores';
+  import Header from '$lib/components/Header.svelte';
+  import Footer from '$lib/components/Footer.svelte';
+  import { services } from '$lib/data/services';
+  import { scrollAnimate } from '$lib/actions/scrollAnimate';
+  import { fade, fly } from 'svelte/transition';
+
+  const slug = $page.params.slug;
+  const service = services.find(s => s.slug === slug);
+
+  if (!service) {
+    // In a real app, you might use error() from @sveltejs/kit
+  }
+</script>
+
+<svelte:head>
+  {#if service}
+    <title>{service.title} | Terrestrial Property Consulting</title>
+    <meta name="description" content={service.description} />
+  {/if}
+</svelte:head>
+
+{#if service}
+  <div class="flex flex-col min-h-screen bg-background-50">
+    <Header />
+
+    <main class="flex-grow pt-24">
+      <!-- Breadcrumbs / Back -->
+      <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-8">
+        <a href="/services" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-foreground-400 hover:text-accent-600 transition-colors group">
+          <i class="ri-arrow-left-line text-lg transition-transform group-hover:-translate-x-1"></i>
+          Back to All Services
+        </a>
+      </div>
+
+      <!-- Hero Header -->
+      <section class="pb-24 px-6 md:px-10 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto">
+          <div class="flex flex-col lg:flex-row gap-16 items-center">
+            <div class="w-full lg:w-1/2" use:scrollAnimate={{ animation: 'fade-right' }}>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-600/10 text-accent-700 border border-accent-600/20 text-[10px] font-bold uppercase tracking-widest mb-6">
+                {service.category}
+              </div>
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-foreground-950 mb-8 leading-tight">
+                {service.title}
+              </h1>
+              <div class="h-1 w-20 bg-accent-600 rounded-full mb-8"></div>
+              <p class="text-lg md:text-xl text-foreground-700 leading-relaxed font-medium">
+                {service.details.intro}
+              </p>
+            </div>
+
+            <div class="w-full lg:w-1/2 relative" use:scrollAnimate={{ animation: 'fade-left' }}>
+              <div class="absolute -inset-4 bg-accent-600/5 rounded-[3rem] -rotate-2"></div>
+              <div class="relative aspect-[4/3] rounded-[2.5rem] bg-accent-600 flex items-center justify-center shadow-2xl overflow-hidden group">
+                <i class="{service.riIcon} text-[120px] md:text-[180px] text-background-50/20 absolute"></i>
+                <div class="text-background-50 text-9xl opacity-10 font-bold select-none">{service.icon}</div>
+                
+                <!-- Floating Card -->
+                <div class="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-2xl shadow-2xl" transition:fly={{ y: 20, delay: 400 }}>
+                  <p class="text-background-50 text-sm md:text-base font-medium leading-relaxed italic">
+                    "Delivering accuracy and professionalism in every {service.category.toLowerCase()} engagement."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Detailed Breakdown -->
+      <section class="py-24 bg-white px-6 md:px-10 border-t border-background-200 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto">
+          <div class="mb-16" use:scrollAnimate={{ animation: 'fade-up' }}>
+            <h2 class="text-3xl font-bold font-heading text-foreground-950 mb-4">Core Focus Areas</h2>
+            <p class="text-foreground-500 max-w-2xl">Discover how our specialized expertise brings value to your specific needs.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {#each service.details.items as item, i}
+              <div 
+                class="bg-background-50 rounded-3xl p-10 border border-background-100 hover:border-accent-600/20 hover:shadow-xl hover:shadow-accent-950/5 transition-all group h-full flex flex-col"
+                use:scrollAnimate={{ animation: 'fade-up', delay: i * 100 }}
+              >
+                <div class="w-12 h-12 rounded-xl bg-accent-600/10 flex items-center justify-center text-accent-600 mb-8 group-hover:bg-accent-600 group-hover:text-background-50 transition-all">
+                  <span class="font-bold font-heading">{i + 1}</span>
+                </div>
+                <h3 class="text-xl font-bold text-foreground-950 mb-4 group-hover:text-accent-700 transition-colors">
+                  {item.title}
+                </h3>
+                <p class="text-sm text-foreground-600 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            {/each}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="py-24 bg-accent-950 relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-10 text-center relative z-10" use:scrollAnimate={{ animation: 'fade-up' }}>
+          <h2 class="text-3xl md:text-5xl font-bold text-background-50 mb-8 font-heading">Need assistance with {service.title}?</h2>
+          <p class="text-background-300 max-w-xl mx-auto mb-12">
+            Our experts are ready to provide the professional guidance you need for your property assets.
+          </p>
+          <div class="flex flex-wrap justify-center gap-6">
+            <a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-background-50 px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] transition-all shadow-xl shadow-accent-600/20">
+              Inquire Now
+            </a>
+            <a href="/services" class="bg-transparent border-2 border-background-50/30 hover:border-background-50 text-background-50 px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] transition-all backdrop-blur-sm">
+              View All Services
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+{:else}
+  <div class="min-h-screen flex items-center justify-center bg-background-50">
+    <div class="text-center">
+      <h1 class="text-6xl font-bold font-heading text-accent-600 mb-4">404</h1>
+      <p class="text-foreground-600 mb-8">Service not found.</p>
+      <a href="/services" class="text-accent-600 font-bold uppercase tracking-widest underline">Return to Services</a>
+    </div>
+  </div>
+{/if}

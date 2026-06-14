@@ -1,0 +1,10 @@
+{
+	"/(client)": [],
+	"/(admin)": [],
+	"/": [],
+	"/(client)/about": [],
+	"/(admin)/admin": [],
+	"/(client)/contact": [],
+	"/(client)/services": [],
+	"/(client)/services/[slug]": []
+}
