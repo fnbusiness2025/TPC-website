@@ -1,0 +1,165 @@
+const services = [
+  {
+    slug: "asset-valuations",
+    title: "Asset/Property Valuations",
+    category: "Professional",
+    description: "Accurate, reliable, and professional valuation services for all types of properties across Malawi.",
+    icon: "📊",
+    riIcon: "ri-bar-chart-box-line",
+    details: {
+      intro: "At TPC, we provide professional property valuation services that are accurate, reliable, and compliant with international standards. Our experienced valuers deliver comprehensive reports for various purposes including financing, insurance, and legal compliance.",
+      items: [
+        { title: "Loan Security", desc: "Reliable valuations for mortgage purposes and collateral verification by banks and financial institutions." },
+        { title: "Insurance Valuation", desc: "Determining appropriate cover for buildings and assets in case of damage or loss to ensure full protection." },
+        { title: "Tax & Legal", desc: "Accurate assessments for estate duty, capital gains tax, and probate proceedings in compliance with MRA standards." }
+      ]
+    }
+  },
+  {
+    slug: "plant-machinery-valuation",
+    title: "Plant and Machinery Valuation",
+    category: "Industrial",
+    description: "Specialized valuation services for industrial plants, machinery, and commercial equipment.",
+    icon: "🏭",
+    riIcon: "ri-settings-4-line",
+    details: {
+      intro: "Specialized Appraisal for Industrial Assets. Industrial and technical assets require specialized valuation knowledge. Our team provides expert appraisals for plant and machinery, ensuring that each asset is correctly valued according to its condition, utility, and market demand.",
+      items: [
+        { title: "Industrial Equipment", desc: "Specialized valuation of manufacturing plants, production lines, and technical heavy machinery." },
+        { title: "Mobile Assets", desc: "Accurate appraisal of vehicle fleets, agricultural equipment, and construction machinery." },
+        { title: "Financial Reporting", desc: "Support for asset revaluation, IFRS compliance, and balance sheet inclusion for corporate entities." }
+      ]
+    }
+  },
+  {
+    slug: "property-management",
+    title: "Property Management",
+    category: "Management",
+    description: "End-to-end management solutions for residential and commercial property investments.",
+    icon: "🏢",
+    riIcon: "ri-building-4-line",
+    details: {
+      intro: "Maximizing the Value of Your Assets. Effective property management is essential for long-term investment success. We provide comprehensive solutions that ensure your properties are well-maintained, tenants are satisfied, and your investment returns are maximized through professional oversight.",
+      items: [
+        { title: "Residential Management", desc: "From single-family homes to large apartment complexes, we handle everything from tenant screening to maintenance." },
+        { title: "Commercial Management", desc: "Professional management of office high-rises, retail spaces, and industrial parks to maximize ROI." },
+        { title: "Financial Reporting", desc: "Transparent financial tracking, rent collection, and detailed monthly reports for property owners." }
+      ]
+    }
+  },
+  {
+    slug: "land-lease-consultancy",
+    title: "Land Lease Consultancy",
+    category: "Consultancy",
+    description: "Expert advice on land leasing negotiations, agreement structuring, and lease management.",
+    icon: "📄",
+    riIcon: "ri-file-list-3-line",
+    details: {
+      intro: "Expert Guidance in Land Leasing & Negotiations. Navigating land lease agreements requires specialized knowledge and strategic negotiation skills. At TPC, we provide comprehensive consultancy services to ensure your land lease arrangements are legally sound, financially beneficial, and strategically aligned with your goals.",
+      items: [
+        { title: "Strategic Negotiations", desc: "We represent your interests in lease negotiations to secure favorable terms, rental rates, and lease durations." },
+        { title: "Agreement Structuring", desc: "Drafting and reviewing lease agreements to ensure all legal requirements are met and risks are mitigated." },
+        { title: "Lease Management", desc: "Ongoing monitoring of lease compliance, renewals, and rent reviews across your portfolio." }
+      ]
+    }
+  },
+  {
+    slug: "telecom-site-acquisition",
+    title: "Telecommunications Site Acquisition",
+    category: "Telecomm",
+    description: "Specialized property solutions for identifying and securing sites for telecom infrastructure.",
+    icon: "🗼",
+    riIcon: "ri-broadcast-line",
+    details: {
+      intro: "Securing the Future of Connectivity. At TPC, we specialize in identifying and acquiring optimal sites for telecommunications infrastructure. Our expertise spans urban and rural environments, ensuring seamless network expansion for our clients through strategic site selection and efficient acquisition processes.",
+      items: [
+        { title: "Site Identification", desc: "Using advanced spatial analysis and local market knowledge to find the most effective locations for network coverage." },
+        { title: "Legal & Regulatory", desc: "Managing all permits, zoning requirements, and legal documentation necessary for site deployment." },
+        { title: "Landlord Liaison", desc: "Building and maintaining positive relationships with property owners to ensure long-term site stability." }
+      ]
+    }
+  },
+  {
+    slug: "asset-tagging",
+    title: "Asset Tagging Solutions",
+    category: "Solutions",
+    description: "Modern asset identification and tracking systems with comprehensive reporting features.",
+    icon: "🏷️",
+    riIcon: "ri-price-tag-3-line",
+    details: {
+      intro: "Full Visibility of Your Tangible Assets. Managing a large inventory of assets can be complex. Our tagging and tracking solutions provide you with the tools to monitor your assets efficiently, reduce loss, and maintain accurate financial records through modern identification technology.",
+      items: [
+        { title: "Inventory Verification", desc: "Conducting physical audits to verify the presence and condition of all corporate and industrial assets." },
+        { title: "Barcode Solutions", desc: "Implementing durable barcoding systems for quick and accurate asset identification and tracking." },
+        { title: "Asset Registers", desc: "Developing and maintaining comprehensive digital asset registers for improved management and reporting." }
+      ]
+    }
+  },
+  {
+    slug: "land-surveying",
+    title: "Land Surveying",
+    category: "Surveying",
+    description: "Precise boundary identification, topographic surveys, and cadastral mapping services.",
+    icon: "📐",
+    riIcon: "ri-compasses-2-line",
+    details: {
+      intro: "Precision & Accuracy in Every Measurement. Our land surveying services provide the foundation for successful property development and legal clarity. Using state-of-the-art surveying equipment and methodologies, we deliver precise data for boundary disputes, construction planning, and cadastral mapping across Malawi.",
+      items: [
+        { title: "Boundary Surveys", desc: "Expert identification and marking of property boundaries to prevent or resolve encroachment disputes." },
+        { title: "Topographic Surveys", desc: "Detailed mapping of land features, elevations, and contours for architectural and engineering design." },
+        { title: "Cadastral Mapping", desc: "Preparation of standard maps and plans for property registration and legal land documentation." }
+      ]
+    }
+  },
+  {
+    slug: "property-sales",
+    title: "Property Sales",
+    category: "Real Estate",
+    description: "Professional brokerage services for the sale and acquisition of real estate properties.",
+    icon: "🏠",
+    riIcon: "ri-home-heart-line",
+    details: {
+      intro: "Connecting Buyers & Sellers with Confidence. Buying or selling property is a significant financial decision. At TPC, we provide professional brokerage services that simplify the process, maximize value, and ensure secure transactions for both buyers and sellers across the Malawi real estate market.",
+      items: [
+        { title: "Strategic Marketing", desc: "Showcasing your property to the right audience through professional listings, photography, and targeted outreach." },
+        { title: "Expert Valuation", desc: "Ensuring properties are priced correctly based on current market trends to attract serious buyers and fast-track sales." },
+        { title: "Transaction Support", desc: "Guiding you through legal requirements, documentation, and negotiations for a smooth and secure closing." }
+      ]
+    }
+  },
+  {
+    slug: "building-plans",
+    title: "Building Plans and Layout Planning",
+    category: "Architecture",
+    description: "Comprehensive design and planning services for optimal field and building layout use.",
+    icon: "🏗️",
+    riIcon: "ri-layout-masonry-line",
+    details: {
+      intro: "Innovative Design for Sustainable Spaces. At TPC, we provide comprehensive building plans and layout planning services tailored to your specific project needs. Our team ensures that every design optimizes land use, enhances functionality, and adheres to all local building codes and regulations.",
+      items: [
+        { title: "Architectural Design", desc: "Creating detailed building plans that balance aesthetic appeal with practical functionality and structural integrity." },
+        { title: "Spatial Planning", desc: "Optimizing the layout of rooms, amenities, and external spaces to maximize utility and enhance the user experience." },
+        { title: "Compliance Check", desc: "Ensuring all plans meet local authority standards and planning permission requirements for a smooth approval process." }
+      ]
+    }
+  },
+  {
+    slug: "market-research",
+    title: "Market Research",
+    category: "Research",
+    description: "In-depth property market analysis and investment research for data-driven decisions.",
+    icon: "📈",
+    riIcon: "ri-line-chart-line",
+    details: {
+      intro: "Insights for Informed Property Decisions. In a dynamic real estate environment, accurate data is key to success. At TPC, we provide in-depth market research services that help you understand trends, mitigate risks, and identify lucrative opportunities within the Malawi property market.",
+      items: [
+        { title: "Trend Analysis", desc: "Monitoring rental yields, property values, and demand patterns to provide a clear picture of the current market state." },
+        { title: "Feasibility Studies", desc: "Comprehensive evaluations of potential development projects to determine their financial and operational viability." },
+        { title: "Investment Advisory", desc: "Data-driven recommendations to help institutional and individual investors optimize their property portfolios." }
+      ]
+    }
+  }
+];
+export {
+  services as s
+};

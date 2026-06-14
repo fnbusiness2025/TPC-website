@@ -17,13 +17,13 @@
       <a href="/admin" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-500 text-background-50 font-medium transition-all">
         <i class="ri-dashboard-line"></i> Dashboard
       </a>
-      <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-400/10 text-background-200 transition-all">
+      <a href="/admin/properties" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-400/10 text-background-200 transition-all">
         <i class="ri-hotel-line"></i> Properties
       </a>
-      <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-400/10 text-background-200 transition-all">
+      <a href="/admin/valuations" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-400/10 text-background-200 transition-all">
         <i class="ri-user-settings-line"></i> Valuations
       </a>
-      <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-400/10 text-background-200 transition-all">
+      <a href="/admin/inquiries" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-400/10 text-background-200 transition-all">
         <i class="ri-chat-3-line"></i> Inquiries
       </a>
     </nav>

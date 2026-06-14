@@ -3,8 +3,8 @@
 
   const quickLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Properties', href: '#' },
-    { name: 'Market Insights', href: '#' },
+    { name: 'Properties', href: '/properties/sale' },
+    { name: 'Market Insights', href: '/services' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' }
   ];
@@ -18,10 +18,10 @@
   ];
 
   const socials = [
-    { icon: 'ri-facebook-fill', href: '#' },
-    { icon: 'ri-twitter-x-fill', href: '#' },
-    { icon: 'ri-instagram-line', href: '#' },
-    { icon: 'ri-linkedin-box-fill', href: '#' }
+    { icon: 'ri-facebook-fill', href: 'https://facebook.com' },
+    { icon: 'ri-twitter-x-fill', href: 'https://twitter.com' },
+    { icon: 'ri-instagram-line', href: 'https://instagram.com' },
+    { icon: 'ri-linkedin-box-fill', href: 'https://linkedin.com' }
   ];
 </script>
 
@@ -113,8 +113,8 @@
         &copy; {new Date().getFullYear()} Terrestrial Property Consulting. All rights reserved.
       </p>
       <div class="flex gap-8">
-        <a href="#" class="text-[10px] text-background-400 hover:text-accent-400 uppercase tracking-widest transition-colors">Privacy Policy</a>
-        <a href="#" class="text-[10px] text-background-400 hover:text-accent-400 uppercase tracking-widest transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-[10px] text-background-400 hover:text-accent-400 uppercase tracking-widest transition-colors">Privacy Policy</a>
+        <a href="/terms" class="text-[10px] text-background-400 hover:text-accent-400 uppercase tracking-widest transition-colors">Terms of Service</a>
       </div>
     </div>
   </div>

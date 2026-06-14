@@ -79,12 +79,17 @@
     </a>
 
     <!-- Primary Nav Groups (Buy/Rent/Commercial) -->
-    <nav class="hidden lg:flex items-center">
+    <nav class="hidden lg:flex items-center" aria-label="Main Navigation">
       <div class="flex items-center h-[88px]">
         {#each [buyMenu, rentMenu, commercialMenu] as menu}
           <div 
             class="relative h-full flex items-center px-4 group cursor-pointer"
             on:mouseenter={() => activeDropdown = menu.title}
+            on:keydown={(e) => e.key === 'Enter' && toggleDropdown(menu.title)}
+            role="button"
+            tabindex="0"
+            aria-expanded={activeDropdown === menu.title}
+            aria-haspopup="true"
           >
             <span class="text-sm font-bold uppercase tracking-widest transition-colors
               {isScrolled ? 'text-foreground-800' : 'text-background-50'} group-hover:text-accent-600">
@@ -96,12 +101,14 @@
               <div 
                 class="absolute top-[88px] left-0 w-[280px] bg-background-50 border border-background-200 shadow-2xl rounded-b-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200"
                 transition:fade={{ duration: 150 }}
+                role="menu"
               >
                 <div class="p-2 flex flex-col">
                   {#each menu.sections as item}
                     <a 
                       href={item.href} 
                       class="px-5 py-3 text-sm font-medium text-foreground-700 hover:bg-accent-600/10 hover:text-accent-700 rounded-xl transition-all"
+                      role="menuitem"
                     >
                       {item.name}
                     </a>

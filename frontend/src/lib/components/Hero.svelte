@@ -113,6 +113,7 @@
   class="relative w-full min-h-[600px] md:min-h-[700px] lg:min-h-[850px] flex items-center justify-center overflow-hidden pt-32 pb-20"
   on:mouseenter={() => (isPaused = true)}
   on:mouseleave={() => (isPaused = false)}
+  aria-label="Property Showcase Carousel"
 >
   <!-- Background Image Carousel -->
   {#each carouselProperties as prop, i}
@@ -130,12 +131,14 @@
   <button 
     class="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-background-50/10 bg-background-50/5 hover:bg-background-50/10 text-background-50 flex items-center justify-center transition-all hidden md:flex"
     on:click={prevSlide}
+    aria-label="Previous Slide"
   >
     <i class="ri-arrow-left-s-line text-2xl"></i>
   </button>
   <button 
     class="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-background-50/10 bg-background-50/5 hover:bg-background-50/10 text-background-50 flex items-center justify-center transition-all hidden md:flex"
     on:click={nextSlide}
+    aria-label="Next Slide"
   >
     <i class="ri-arrow-right-s-line text-2xl"></i>
   </button>
@@ -146,6 +149,7 @@
       <button 
         class="group flex items-center gap-4 text-left"
         on:click={() => goToSlide(i)}
+        aria-label="Go to slide {i + 1}"
       >
         <div class="w-1.5 h-1.5 rounded-full transition-all duration-300 {i === currentSlide ? 'bg-accent-600 scale-150' : 'bg-background-50/30 group-hover:bg-background-50/60'}"></div>
         <span class="text-[9px] font-bold uppercase tracking-widest transition-all duration-300 {i === currentSlide ? 'text-accent-400 opacity-100' : 'text-background-50 opacity-0 group-hover:opacity-50'}">0{i + 1}</span>
@@ -216,8 +220,8 @@
           <div class="flex-grow grid grid-cols-1 md:grid-cols-3 gap-4">
             <!-- Location Filter -->
             <div class="relative">
-              <label class="absolute left-4 top-3 text-[10px] font-bold uppercase tracking-widest text-foreground-400">Location</label>
-              <select class="w-full bg-background-100 rounded-2xl pt-8 pb-3 px-4 text-sm font-bold text-foreground-950 border border-transparent focus:border-accent-600/30 focus:bg-white transition-all appearance-none cursor-pointer">
+              <label for="location-select" class="absolute left-4 top-3 text-[10px] font-bold uppercase tracking-widest text-foreground-400">Location</label>
+              <select id="location-select" class="w-full bg-background-100 rounded-2xl pt-8 pb-3 px-4 text-sm font-bold text-foreground-950 border border-transparent focus:border-accent-600/30 focus:bg-white transition-all appearance-none cursor-pointer">
                 <option>Select Location</option>
                 {#each locations as loc}
                   <option>{loc}</option>
@@ -228,8 +232,8 @@
 
             <!-- Property Type Filter -->
             <div class="relative">
-              <label class="absolute left-4 top-3 text-[10px] font-bold uppercase tracking-widest text-foreground-400">Property Type</label>
-              <select class="w-full bg-background-100 rounded-2xl pt-8 pb-3 px-4 text-sm font-bold text-foreground-950 border border-transparent focus:border-accent-600/30 focus:bg-white transition-all appearance-none cursor-pointer">
+              <label for="property-type-select" class="absolute left-4 top-3 text-[10px] font-bold uppercase tracking-widest text-foreground-400">Property Type</label>
+              <select id="property-type-select" class="w-full bg-background-100 rounded-2xl pt-8 pb-3 px-4 text-sm font-bold text-foreground-950 border border-transparent focus:border-accent-600/30 focus:bg-white transition-all appearance-none cursor-pointer">
                 <option>All Types</option>
                 {#each propertyTypes as type}
                   <option>{type}</option>
@@ -240,8 +244,8 @@
 
             <!-- Price Filter -->
             <div class="relative">
-              <label class="absolute left-4 top-3 text-[10px] font-bold uppercase tracking-widest text-foreground-400">Price Range</label>
-              <select class="w-full bg-background-100 rounded-2xl pt-8 pb-3 px-4 text-sm font-bold text-foreground-950 border border-transparent focus:border-accent-600/30 focus:bg-white transition-all appearance-none cursor-pointer">
+              <label for="price-range-select" class="absolute left-4 top-3 text-[10px] font-bold uppercase tracking-widest text-foreground-400">Price Range</label>
+              <select id="price-range-select" class="w-full bg-background-100 rounded-2xl pt-8 pb-3 px-4 text-sm font-bold text-foreground-950 border border-transparent focus:border-accent-600/30 focus:bg-white transition-all appearance-none cursor-pointer">
                 <option>Any Price</option>
                 <option>MK 0 - 50M</option>
                 <option>MK 50M - 150M</option>
@@ -262,6 +266,7 @@
         <button 
           class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-foreground-500 hover:text-accent-600 transition-colors w-fit"
           on:click={() => (showFilters = !showFilters)}
+          aria-expanded={showFilters}
         >
           <i class="ri-equalizer-line text-sm"></i>
           {showFilters ? 'Hide Advanced Filters' : 'Show Advanced Filters'}
@@ -272,8 +277,8 @@
         {#if showFilters}
           <div transition:slide class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2 border-t border-background-100 mt-2">
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 ml-1">Bedrooms</label>
-              <select class="bg-background-100 rounded-xl px-4 py-3 text-xs font-bold border border-transparent focus:border-accent-600">
+              <label for="bedrooms-select" class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 ml-1">Bedrooms</label>
+              <select id="bedrooms-select" class="bg-background-100 rounded-xl px-4 py-3 text-xs font-bold border border-transparent focus:border-accent-600">
                 <option>Any</option>
                 <option>1+</option>
                 <option>2+</option>
@@ -282,8 +287,8 @@
               </select>
             </div>
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 ml-1">Bathrooms</label>
-              <select class="bg-background-100 rounded-xl px-4 py-3 text-xs font-bold border border-transparent focus:border-accent-600">
+              <label for="bathrooms-select" class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 ml-1">Bathrooms</label>
+              <select id="bathrooms-select" class="bg-background-100 rounded-xl px-4 py-3 text-xs font-bold border border-transparent focus:border-accent-600">
                 <option>Any</option>
                 <option>1+</option>
                 <option>2+</option>
@@ -291,12 +296,12 @@
               </select>
             </div>
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 ml-1">Area (m²)</label>
-              <input type="text" placeholder="Min Area" class="bg-background-100 rounded-xl px-4 py-3 text-xs font-bold border border-transparent focus:border-accent-600" />
+              <label for="area-input" class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 ml-1">Area (m²)</label>
+              <input id="area-input" type="text" placeholder="Min Area" class="bg-background-100 rounded-xl px-4 py-3 text-xs font-bold border border-transparent focus:border-accent-600" />
             </div>
             <div class="flex flex-col gap-2">
-              <label class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 ml-1">Keywords</label>
-              <input type="text" placeholder="Pool, Garage, etc." class="bg-background-100 rounded-xl px-4 py-3 text-xs font-bold border border-transparent focus:border-accent-600" />
+              <label for="keywords-input" class="text-[10px] font-bold uppercase tracking-widest text-foreground-400 ml-1">Keywords</label>
+              <input id="keywords-input" type="text" placeholder="Pool, Garage, etc." class="bg-background-100 rounded-xl px-4 py-3 text-xs font-bold border border-transparent focus:border-accent-600" />
             </div>
           </div>
         {/if}
@@ -326,7 +331,7 @@
       <button class="bg-transparent border-2 border-background-50/30 hover:border-background-50 text-background-50 px-8 py-4 rounded-xl font-bold text-[10px] md:text-xs transition-all uppercase tracking-[0.2em] backdrop-blur-sm">
         Get Free Valuation
       </button>
-      <a href="#" class="flex items-center gap-2 text-background-50 font-semibold text-[10px] md:text-xs hover:text-accent-400 transition-colors uppercase tracking-[0.2em] px-4">
+      <a href="/services" class="flex items-center gap-2 text-background-50 font-semibold text-[10px] md:text-xs hover:text-accent-400 transition-colors uppercase tracking-[0.2em] px-4">
         Our Services
         <i class="ri-arrow-right-line"></i>
       </a>
