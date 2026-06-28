@@ -329,7 +329,7 @@
         Browse Properties
       </button>
       <button class="bg-transparent border-2 border-background-50/30 hover:border-background-50 text-background-50 px-8 py-4 rounded-xl font-bold text-[10px] md:text-xs transition-all uppercase tracking-[0.2em] backdrop-blur-sm">
-        Get Free Valuation
+        Request Valuation
       </button>
       <a href="/services" class="flex items-center gap-2 text-background-50 font-semibold text-[10px] md:text-xs hover:text-accent-400 transition-colors uppercase tracking-[0.2em] px-4">
         Our Services

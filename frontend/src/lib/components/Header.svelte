@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { fade, slide } from 'svelte/transition';
   import { page } from '$app/stores';
+  import { enhance } from '$app/forms';
   import Logo from './Logo.svelte';
 
   let isScrolled = false;
@@ -49,10 +50,11 @@
   ];
 
   const utilityNav = [
-    { name: 'Login', icon: 'ri-user-line', href: '/account' }
+    { name: 'Sign In / Sign Up', icon: 'ri-user-line', href: '/login' }
   ];
 
   $: activePath = $page.url.pathname;
+  $: user = $page.data.user;
 
   onMount(() => {
     const handleScroll = () => {
@@ -136,17 +138,60 @@
       {/each}
     </nav>
 
-    <div class="hidden lg:flex items-center gap-4 pl-6 border-l border-background-200/20">
-      {#each utilityNav as item}
-        <a 
-          href={item.href} 
-          class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all
-          {isScrolled ? 'text-foreground-800 hover:text-accent-600' : 'text-background-50 hover:text-accent-400'}"
-        >
-          <i class="{item.icon} text-lg"></i>
-          <span class="hidden xl:inline">{item.name}</span>
-        </a>
-      {/each}
+    <div class="hidden lg:flex items-center gap-6 pl-6 border-l border-background-200/20">
+      {#if user}
+        <!-- Logged in state -->
+        {#if user.role === 'admin'}
+          <a 
+            href="/admin" 
+            class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all
+            {isScrolled ? 'text-foreground-800 hover:text-accent-600' : 'text-background-50 hover:text-accent-450'}"
+          >
+            <i class="ri-dashboard-line text-lg"></i>
+            <span class="hidden xl:inline">{user.first_name} {user.last_name}</span>
+          </a>
+        {:else if user.role === 'agent'}
+          <a 
+            href="/agent" 
+            class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all
+            {isScrolled ? 'text-foreground-800 hover:text-accent-600' : 'text-background-50 hover:text-accent-450'}"
+          >
+            <i class="ri-user-line text-lg"></i>
+            <span class="hidden xl:inline">{user.first_name} {user.last_name}</span>
+          </a>
+        {:else}
+          <div 
+            class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all
+            {isScrolled ? 'text-foreground-700' : 'text-background-100/90'}"
+          >
+            <i class="ri-user-smile-line text-lg"></i>
+            <span class="hidden xl:inline">Hi, {user.first_name} {user.last_name}</span>
+          </div>
+        {/if}
+
+        <form method="POST" action="/login?/logout" use:enhance class="inline-flex">
+          <button 
+            type="submit" 
+            class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all
+            {isScrolled ? 'text-red-650 hover:text-red-700' : 'text-red-300 hover:text-red-400'}"
+          >
+            <i class="ri-logout-box-r-line text-lg"></i>
+            <span class="hidden xl:inline">Sign Out</span>
+          </button>
+        </form>
+      {:else}
+        <!-- Logged out state -->
+        {#each utilityNav as item}
+          <a 
+            href={item.href} 
+            class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all
+            {isScrolled ? 'text-foreground-800 hover:text-accent-600' : 'text-background-50 hover:text-accent-400'}"
+          >
+            <i class="{item.icon} text-lg"></i>
+            <span class="hidden xl:inline">{item.name}</span>
+          </a>
+        {/each}
+      {/if}
     </div>
 
     <!-- Mobile Toggle -->
@@ -188,12 +233,38 @@
 
         <!-- Utilities -->
         <div class="flex flex-col gap-4 p-6 bg-background-100 rounded-3xl">
-          {#each utilityNav as item}
-            <a href={item.href} class="flex items-center gap-4 text-foreground-950 font-bold">
-              <i class="{item.icon} text-xl text-accent-600"></i>
-              {item.name}
-            </a>
-          {/each}
+          {#if user}
+            {#if user.role === 'admin'}
+              <a href="/admin" class="flex items-center gap-4 text-foreground-950 font-bold">
+                <i class="ri-dashboard-line text-xl text-accent-600"></i>
+                {user.first_name} {user.last_name}
+              </a>
+            {:else if user.role === 'agent'}
+              <a href="/agent" class="flex items-center gap-4 text-foreground-950 font-bold">
+                <i class="ri-user-line text-xl text-accent-600"></i>
+                {user.first_name} {user.last_name}
+              </a>
+            {:else}
+              <div class="flex items-center gap-4 text-foreground-700 font-bold">
+                <i class="ri-user-smile-line text-xl text-accent-600"></i>
+                Hi, {user.first_name} {user.last_name}
+              </div>
+            {/if}
+            
+            <form method="POST" action="/login?/logout" use:enhance class="w-full">
+              <button type="submit" class="flex items-center gap-4 text-red-655 font-bold w-full text-left">
+                <i class="ri-logout-box-r-line text-xl text-red-500"></i>
+                Sign Out
+              </button>
+            </form>
+          {:else}
+            {#each utilityNav as item}
+              <a href={item.href} class="flex items-center gap-4 text-foreground-950 font-bold">
+                <i class="{item.icon} text-xl text-accent-600"></i>
+                {item.name}
+              </a>
+            {/each}
+          {/if}
         </div>
       </div>
     </div>
